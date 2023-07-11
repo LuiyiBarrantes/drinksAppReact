@@ -1,0 +1,13 @@
+.header{
+    background-color: orangered;
+    color: white;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    top: -20px;
+    left: -6px;
+}
+
+.header h1{
+    /* width: 100%; */
+}
