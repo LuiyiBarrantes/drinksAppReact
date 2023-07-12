@@ -10,7 +10,7 @@ export const MainLayout = ({children}) => {
   return (
     <div className={styles.main}>
         <Header/>
-        <Container className='mt-5'>
+        <Container className='mt-3'>
             {children}
         </Container>
         <Footer/>

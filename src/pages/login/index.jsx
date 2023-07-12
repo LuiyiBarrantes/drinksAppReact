@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export const Login = () => {
 
-    const { user, login} = useUser()
+    const { user, login, logout} = useUser()
 
     useEffect(() => {
       login()
@@ -18,6 +18,7 @@ export const Login = () => {
   return (
     <div><h1>Login</h1>
     <hr />
+    
     <h2>Bienvenido {user}</h2>
     <Link to={'/'}>Volver al Home</Link>
     </div>
