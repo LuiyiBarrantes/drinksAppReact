@@ -2,10 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Card, Col } from 'react-bootstrap'
 import useDrinks from '../../hooks/useDrinks'
+import useCart from '../../hooks/useCart'
 
 export const DrinkCard = ({drink}) => {
     const {strDrinkThumb,strDrink, idDrink} = drink
     const {handleDrinkIdClick, handleShowModalClick} = useDrinks()
+    const {addCart} = useCart()
   return (
     <Col md={6} lg={3} className='d-flex align-content-stretch'>
         <Card className='mb-4'>
@@ -27,6 +29,13 @@ export const DrinkCard = ({drink}) => {
                     }
                 >
                     Ver receta
+                </Button>
+                <Button
+                    variant='danger'
+                    className='w-100 text-uppercase mt-1'
+                    
+                >
+                    Comprar
                 </Button>
             </Card.Body>
         </Card>

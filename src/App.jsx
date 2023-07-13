@@ -6,18 +6,21 @@ import { AppRoutes } from './routes'
 import { UserProvider } from './context/UserProvider'
 import { CategoriesProvider } from './context/CategoriesProvider'
 import { DrinksProvider } from './context/DrinksProvider'
+import { CartProvider } from './context/CartProvider'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
 
     <UserProvider>
       <CategoriesProvider>
         <DrinksProvider>
+          <CartProvider>
           <MainLayout>
             <AppRoutes />
           </MainLayout>
+          </CartProvider>
         </DrinksProvider>
       </CategoriesProvider>
     </UserProvider>
