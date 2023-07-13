@@ -33,6 +33,9 @@ export const DrinkCard = ({drink}) => {
                 <Button
                     variant='danger'
                     className='w-100 text-uppercase mt-1'
+                    onClick={() => 
+                        {addCart(idDrink)}
+                    }
                     
                 >
                     Comprar
