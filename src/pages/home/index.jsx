@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { Button, Col, Row } from 'react-bootstrap'
 import styles from "./index.module.css";
 import { DrinksList } from '../../components/drinksList'
+import DrinkModalDetail from '../../components/drinkModalDetail'
 
 export const Home = () => {
 
@@ -19,6 +20,7 @@ export const Home = () => {
       <hr />
       <SearchForm/>
       <DrinksList/>
+      <DrinkModalDetail/>
         </Col>
         <Col className='border-start' xs={2} sm={2} md={2} lg={2}>
         {

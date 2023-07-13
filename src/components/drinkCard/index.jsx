@@ -5,23 +5,26 @@ import useDrinks from '../../hooks/useDrinks'
 
 export const DrinkCard = ({drink}) => {
     const {strDrinkThumb,strDrink, idDrink} = drink
-    const {getRecipe} = useDrinks()
+    const {handleDrinkIdClick, handleShowModalClick} = useDrinks()
   return (
-    <Col md={6} lg={3}>
+    <Col md={6} lg={3} className='d-flex align-content-stretch'>
         <Card className='mb-4'>
             <Card.Img
                 variant='top'
                 src={strDrinkThumb}
                 alt={`Imagen de ${strDrink}`}
             />
-            <Card.Body>
+            <Card.Body className='d-flex flex-column justify-content-between'>
                 <Card.Title>
                     {strDrink}
                 </Card.Title>
                 <Button
                     variant='warning'
                     className='w-100 text-uppercase mt-2'
-                    onClick={() => getRecipe(idDrink)}
+                    onClick={() => 
+                        {handleDrinkIdClick(idDrink)
+                        handleShowModalClick()}
+                    }
                 >
                     Ver receta
                 </Button>
