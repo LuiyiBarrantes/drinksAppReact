@@ -1,5 +1,9 @@
-.main{
+.body{
     /* width: 100vw; */
-    height: auto;
+    /* height: auto; */
     min-height: 100vh;
+}
+.main{
+    min-height: 70vh;
+    margin-top: 10px;
 }

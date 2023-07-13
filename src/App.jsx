@@ -5,20 +5,23 @@ import { MainLayout } from './layouts'
 import { AppRoutes } from './routes'
 import { UserProvider } from './context/UserProvider'
 import { CategoriesProvider } from './context/CategoriesProvider'
+import { DrinksProvider } from './context/DrinksProvider'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    
+
     <UserProvider>
       <CategoriesProvider>
-      <MainLayout>
-        <AppRoutes/>
-      </MainLayout>
+        <DrinksProvider>
+          <MainLayout>
+            <AppRoutes />
+          </MainLayout>
+        </DrinksProvider>
       </CategoriesProvider>
     </UserProvider>
-    
+
   )
 }
 

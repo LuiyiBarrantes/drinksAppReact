@@ -8,9 +8,10 @@ import { Container } from 'react-bootstrap'
 
 export const MainLayout = ({children}) => {
   return (
-    <div className={styles.main}>
+    <div className={styles.body}>
         <Header/>
-        <Container className='mt-3'>
+        <Container className={styles.main}
+        /* className='mt-3' */>
             {children}
         </Container>
         <Footer/>

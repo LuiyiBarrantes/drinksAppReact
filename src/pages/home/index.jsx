@@ -4,6 +4,7 @@ import useUser from '../../hooks/useUser'
 import { Link } from 'react-router-dom'
 import { Button, Col, Row } from 'react-bootstrap'
 import styles from "./index.module.css";
+import { DrinksList } from '../../components/drinksList'
 
 export const Home = () => {
 
@@ -13,12 +14,13 @@ export const Home = () => {
     <div className={`d-flex ${styles.body}`}>
       <Row className='justify-content-between'>
         <Col  xs={9} sm={9} md={9}>
-        <h1>Encuentra tu cocktail favorito.</h1>
+        <h1>Encuentra tu bebida favorita.</h1>
       
       <hr />
       <SearchForm/>
+      <DrinksList/>
         </Col>
-        <Col className='border-start' xs={2} sm={2} md={2}>
+        <Col className='border-start' xs={2} sm={2} md={2} lg={2}>
         {
         user ? <>
         {/* <h2>Hola! {user}</h2> 
