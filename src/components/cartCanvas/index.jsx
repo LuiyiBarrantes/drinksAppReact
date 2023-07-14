@@ -3,10 +3,20 @@ import PropTypes from 'prop-types';
 import useCart from "../../hooks/useCart";
 import { IconShoppingCartOff } from "@tabler/icons-react";
 import { CartItems } from "../cartItem";
+import { types } from "../../types";
+const { cleanCart } = types
 
 export const CartCanvas = ({handleCloseCart,showCart}) => {
     
-    const {cart} = useCart()
+    const {cart, dispatch} = useCart()
+
+    const handleCleanCart = () => {
+        //console.log(drink);
+        dispatch({
+            type: cleanCart,
+            payload: cart
+        })
+    }
 
     return (
         <Offcanvas 
@@ -19,6 +29,12 @@ export const CartCanvas = ({handleCloseCart,showCart}) => {
             <Offcanvas.Title>
             Tu Carrito
             </Offcanvas.Title>
+            {
+                !cart.length ?
+                '':
+                <button className='btn btn-sm btn-outline-danger' onClick={handleCleanCart}>Vaciar
+            <IconShoppingCartOff></IconShoppingCartOff>
+                </button>}
             </Offcanvas.Header>
             <Offcanvas.Body>
                 <ListGroup>
@@ -33,6 +49,7 @@ export const CartCanvas = ({handleCloseCart,showCart}) => {
                         
                     }
                 </ListGroup>
+                
             </Offcanvas.Body>
         </Offcanvas>
     )
