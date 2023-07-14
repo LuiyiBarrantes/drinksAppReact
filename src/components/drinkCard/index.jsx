@@ -4,14 +4,15 @@ import { Button, Card, Col } from 'react-bootstrap'
 import useDrinks from '../../hooks/useDrinks'
 import useCart from '../../hooks/useCart'
 import { types } from '../../types'
+import { IconShoppingCartPlus } from '@tabler/icons-react'
 
 export const DrinkCard = ({ drink }) => {
     const { strDrinkThumb, strDrink, idDrink } = drink
     const { handleDrinkIdClick, handleShowModalClick } = useDrinks()
     const { dispatch } = useCart()
-const {addItem/* , removeItem, removeAll, cleanCart */} =  types
+const {addItemToCart/* , removeItem, removeAll, cleanCart */} =  types
     const handleAddCart = () => {
-
+        console.log(drink);
         dispatch({
             type: addItemToCart,
             payload: drink
@@ -47,7 +48,7 @@ const {addItem/* , removeItem, removeAll, cleanCart */} =  types
                         onClick={ handleAddCart                      }
 
                     >
-                        Comprar
+                        Comprar <IconShoppingCartPlus></IconShoppingCartPlus>
                     </Button>
                 </Card.Body>
             </Card>

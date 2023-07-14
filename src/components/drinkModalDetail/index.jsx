@@ -4,11 +4,12 @@ import { Button, Col, Image, Modal, Row, Spinner } from 'react-bootstrap'
 import useDrinks from '../../hooks/useDrinks'
 import useCart from '../../hooks/useCart'
 import { types } from '../../types'
+import { IconShoppingCartPlus } from '@tabler/icons-react'
 
 const DrinkModalDetail = () => {
     const { showModal, handleShowModalClick, recipe, loading } = useDrinks()
 
-    const { strDrink, strDrinkThumb, strInstructions, idDrink } = recipe
+    const { strDrink, strDrinkThumb, strInstructions, idDrink, price } = recipe
 
     const showIngredients = () => {
         const ingredients = []
@@ -25,12 +26,12 @@ const DrinkModalDetail = () => {
         return ingredients
     }
     const { dispatch } = useCart()
-    const { addItem/* , removeItem, removeAll, cleanCart */ } = types
+    const { addItemToCart/* , removeItem, removeAll, cleanCart */ } = types
     const handleAddCart = () => {
 
         dispatch({
             type: addItemToCart,
-            payload: { strDrink, strDrinkThumb, idDrink }
+            payload: { strDrink, strDrinkThumb, idDrink, price }
         })
     }
 
@@ -66,20 +67,21 @@ const DrinkModalDetail = () => {
                     <Modal.Body>
                         {
                             loading ? '' :
-                                <>
+                                <>  
                                     <h4>Ingredients & Measures</h4>
                                     <ul>
                                         {showIngredients()}
                                     </ul>
                                     <h4>Instructions</h4>
                                     <p>{strInstructions}</p>
+                                    <h6 className='text-end'>Price: ${price}</h6>
                                     <Button
                                         variant='danger'
                                         className='w-100 text-uppercase mt-1'
                                         onClick={handleAddCart}
 
                                     >
-                                        Comprar
+                                        Comprar <IconShoppingCartPlus></IconShoppingCartPlus>
                                     </Button>
                                 </>
                         }
