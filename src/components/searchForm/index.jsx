@@ -17,7 +17,7 @@ export const SearchForm = () => {
   }
 
   const validationSchema = Yup.object({
-    ingredient: Yup.string().required('El nombre es necesario'),
+    //ingredient: Yup.string().required('El nombre es necesario'),
     category: Yup.string().required('La categria es necesaria')
   })
 

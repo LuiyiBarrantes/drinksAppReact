@@ -60,7 +60,7 @@ const DrinksProvider = ({children}) => {
             const recipeData = await getRecipeService(idDrink)
             
             setRecipe(recipeData)
-            
+            //console.log(recipe);
          } catch (error) {
             //console.log(error);
             console.error();

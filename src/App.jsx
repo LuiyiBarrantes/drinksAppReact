@@ -9,7 +9,7 @@ import { DrinksProvider } from './context/DrinksProvider'
 import { CartProvider } from './context/CartProvider'
 
 function App() {
-  
+
 
   return (
 
@@ -17,9 +17,9 @@ function App() {
       <CategoriesProvider>
         <DrinksProvider>
           <CartProvider>
-          <MainLayout>
-            <AppRoutes />
-          </MainLayout>
+            <MainLayout>
+              <AppRoutes />
+            </MainLayout>
           </CartProvider>
         </DrinksProvider>
       </CategoriesProvider>

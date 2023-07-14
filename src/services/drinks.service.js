@@ -25,7 +25,7 @@ export const getRecipeService = async (drinkId) => {
     const {data} = await axios.get(url)
     //const {drinks} = data
 
-    //console.log(drinks);
+    //console.log(data);
 
     return data.drinks[0] || []
 } catch (error) {
