@@ -8,7 +8,6 @@ import { cartReducer } from '../reducers/cart.reducer';
  const init = () => { 
     return JSON.parse(localStorage.getItem('cart')) || []
   }
-
  const CartProvider = ({children}) => {
      // Initial Provider State
      /* const [cart, setCart] = useState([])
@@ -19,7 +18,7 @@ import { cartReducer } from '../reducers/cart.reducer';
       } */
 
       const [cart, dispatch] = useReducer(cartReducer, [], init)
-
+//console.log(cart);
      const contextValues = {
         cart,
         dispatch

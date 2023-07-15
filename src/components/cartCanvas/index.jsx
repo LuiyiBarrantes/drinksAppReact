@@ -1,22 +1,48 @@
-import { Col, ListGroup, Offcanvas } from "react-bootstrap"
+import { Button, Col, ListGroup, Offcanvas } from "react-bootstrap"
 import PropTypes from 'prop-types';
 import useCart from "../../hooks/useCart";
 import { IconShoppingCartOff } from "@tabler/icons-react";
 import { CartItems } from "../cartItem";
 import { types } from "../../types";
+import Swal from "sweetalert2";
 const { cleanCart } = types
 
 export const CartCanvas = ({handleCloseCart,showCart}) => {
     
+    
     const {cart, dispatch} = useCart()
-
+//console.log(cart);
+         //guardo en local storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+  
     const handleCleanCart = () => {
         //console.log(drink);
-        dispatch({
+        Swal.fire({
+            title: 'Seguro?',
+            text: "No podras revertir estos cambios!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Si, vaciar!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              dispatch({
             type: cleanCart,
             payload: cart
         })
+        Swal.fire(
+                'Hecho!',
+                'El carrito se a vaciado.',
+                'success'
+              )
+            }
+          })
+        
     }
+
+    
 
     return (
         <Offcanvas 
@@ -36,7 +62,7 @@ export const CartCanvas = ({handleCloseCart,showCart}) => {
             <IconShoppingCartOff></IconShoppingCartOff>
                 </button>}
             </Offcanvas.Header>
-            <Offcanvas.Body>
+            <Offcanvas.Body className="d-flex flex-column justify-content-between">
                 <ListGroup>
                     {
                         cart.length ?
@@ -49,6 +75,13 @@ export const CartCanvas = ({handleCloseCart,showCart}) => {
                         
                     }
                 </ListGroup>
+                
+                <div className="d-flex justify-content-end border-top">
+                    
+                    <Button className='btn btn-warning mt-3'>
+                        Confirmar Comprar
+                    </Button>
+                </div>
                 
             </Offcanvas.Body>
         </Offcanvas>

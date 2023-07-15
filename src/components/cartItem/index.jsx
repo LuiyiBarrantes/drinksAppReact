@@ -47,13 +47,14 @@ export const CartItems = () => {
         <h6 className='text-center'>{item.strDrink}</h6>
         <hr />
         <h6>Price $ {item.price}</h6>
-        <div class="btn-group gap-1" role="group" aria-label="Basic example">
+        <div className="btn-group gap-1" role="group" aria-label="Basic example">
             <button className='btn btn-sm btn-outline-danger' onClick={()=>handleRemoveItem(item)}>
             <IconMinus></IconMinus>
                 </button>
             <input 
             type="text" 
-            className='form-control w-20' 
+            className='form-control w-20'
+            disabled 
             value={item.quantity} />
             <button className='btn btn-sm btn-outline-success' onClick={()=>handleAddItem(item)}>
             <IconPlus

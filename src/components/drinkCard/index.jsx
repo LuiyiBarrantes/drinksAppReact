@@ -5,18 +5,27 @@ import useDrinks from '../../hooks/useDrinks'
 import useCart from '../../hooks/useCart'
 import { types } from '../../types'
 import { IconShoppingCartPlus } from '@tabler/icons-react'
+import Swal from 'sweetalert2'
 
 export const DrinkCard = ({ drink }) => {
     const { strDrinkThumb, strDrink, idDrink } = drink
     const { handleDrinkIdClick, handleShowModalClick } = useDrinks()
     const { dispatch } = useCart()
-const {addItemToCart/* , removeItem, removeAll, cleanCart */} =  types
+const {addItemToCart} =  types
     const handleAddCart = () => {
         console.log(drink);
         dispatch({
             type: addItemToCart,
             payload: drink
         })
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Bebida agregada al carrito',
+            showConfirmButton: false,
+            timer: 1500,
+            width:'250px'
+          })
     }
 
     return (

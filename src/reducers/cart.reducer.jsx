@@ -6,6 +6,13 @@ const { addItemToCart, removeItemFromCart, removeAllItemsFromCart, cleanCart } =
 export const cartReducer = (state = [], { type, payload }) => {
     const item = state.find(item => item.idDrink === payload.idDrink)
 
+   /*  const saveCart = (cart) => { try {
+         
+        localStorage.setItem('cart', JSON.stringify(cart));
+      } catch (error) {
+        console.log('Error al guardar el carrito en el localStorage:', error);
+      } } */
+
     switch (type) {
 
         case addItemToCart:
