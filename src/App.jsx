@@ -7,24 +7,25 @@ import { UserProvider } from './context/UserProvider'
 import { CategoriesProvider } from './context/CategoriesProvider'
 import { DrinksProvider } from './context/DrinksProvider'
 import { CartProvider } from './context/CartProvider'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
 
 
   return (
-
-    <UserProvider>
-      <CategoriesProvider>
-        <DrinksProvider>
-          <CartProvider>
-            <MainLayout>
-              <AppRoutes />
-            </MainLayout>
-          </CartProvider>
-        </DrinksProvider>
-      </CategoriesProvider>
-    </UserProvider>
-
+    <BrowserRouter>
+      <UserProvider>
+        <CategoriesProvider>
+          <DrinksProvider>
+            <CartProvider>
+              <MainLayout>
+                <AppRoutes />
+              </MainLayout>
+            </CartProvider>
+          </DrinksProvider>
+        </CategoriesProvider>
+      </UserProvider>
+    </BrowserRouter>
   )
 }
 

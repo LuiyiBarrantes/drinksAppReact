@@ -13,8 +13,8 @@ export const Home = () => {
 
   return (
     <div className={`d-flex ${styles.body}`}>
-      <Row className='justify-content-between'>
-        <Col  xs={9} sm={9} md={9}>
+      <Row className='justify-content-between w-100'>
+        <Col  >
         <h1>Encuentra tu bebida favorita.</h1>
       
       <hr />
@@ -22,7 +22,7 @@ export const Home = () => {
       <DrinksList/>
       <DrinkModalDetail/>
         </Col>
-        <Col className='border-start' xs={2} sm={2} md={2} lg={2}>
+        <Col className='border-start' xs={2} >
         {
         user ? <>
         {/* <h2>Hola! {user}</h2> 

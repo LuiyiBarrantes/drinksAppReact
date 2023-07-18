@@ -13,13 +13,13 @@ export const DrinkCard = ({ drink }) => {
     const { dispatch } = useCart()
 const {addItemToCart} =  types
     const handleAddCart = () => {
-        console.log(drink);
+        //console.log(drink);
         dispatch({
             type: addItemToCart,
             payload: drink
         })
         Swal.fire({
-            position: 'top-end',
+            position: 'top-center',
             icon: 'success',
             title: 'Bebida agregada al carrito',
             showConfirmButton: false,

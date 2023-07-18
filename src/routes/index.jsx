@@ -8,13 +8,16 @@ import { Login } from '../pages/login'
 export const AppRoutes = () => {
   return (
     
-    <BrowserRouter>
+    
         <Routes>
             <Route path='/' element={<Home/>}></Route>
             <Route path='*' element={<NotFound/>}></Route>
             <Route path='/login' element={<Login/>}></Route>
+            <Route path='/user' element={Profile}>
+
+            </Route>
             <Route path='/ejemplo' element={<Ejemplo/>}></Route>
         </Routes>
-    </BrowserRouter>
+    
   )
 }
