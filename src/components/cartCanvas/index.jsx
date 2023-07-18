@@ -77,10 +77,10 @@ export const CartCanvas = ({handleCloseCart,showCart}) => {
                 </ListGroup>
                 
                 <div className="d-flex justify-content-end border-top">
-                    
-                    <Button className='btn btn-warning mt-3'>
+                    {cart.length && <Button className='btn btn-warning mt-3'>
                         Confirmar Comprar
-                    </Button>
+                    </Button>}
+                    
                 </div>
                 
             </Offcanvas.Body>
