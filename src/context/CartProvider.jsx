@@ -19,9 +19,15 @@ import { cartReducer } from '../reducers/cart.reducer';
 
       const [cart, dispatch] = useReducer(cartReducer, [], init)
 //console.log(cart);
+    const totalItems = cart.reduce(
+    (subTotal, item) => subTotal + item.quantity,
+    0
+  );
+  console.log(totalItems);
      const contextValues = {
         cart,
-        dispatch
+        dispatch,
+        totalItems
         /* 
         addCart  */
     }

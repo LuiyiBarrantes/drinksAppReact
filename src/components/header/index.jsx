@@ -9,7 +9,7 @@ import useCart from '../../hooks/useCart'
 
 export const Header = () => {
   const { user } = useUser() || {}
-  const { cart } = useCart()
+  const { cart, totalItems } = useCart()
   const [showCart, setShowCart] = useState(false)
 
   const handleShowCart = () => setShowCart(true)
@@ -35,7 +35,7 @@ export const Header = () => {
             height={50}
             onClick={handleShowCart}>
           </IconShoppingCart>
-          <Badge className='position-absolute start-50' pill>{cart.length}</Badge>
+          <Badge className='position-absolute start-50' pill>{/* cart.length */ totalItems}</Badge>
         </div>
         <CartCanvas showCart={showCart} handleCloseCart={handleHideCart} />
       </div>
