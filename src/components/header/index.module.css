@@ -20,3 +20,7 @@
     cursor: pointer;
     position: sticky;
 }
+.link{
+    color: inherit;
+  text-decoration: none;
+}

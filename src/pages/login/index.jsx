@@ -20,7 +20,7 @@ export const Login = () => {
     <hr />
     
     <h2>Bienvenido {user}</h2>
-    <Link to={'/'}>Volver al Home</Link>
+    <Link to={'/drinksAppReact/'}>Volver al Home</Link>
     </div>
   )
 }

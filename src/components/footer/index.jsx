@@ -5,7 +5,7 @@ import { IconHeartFilled } from '@tabler/icons-react'
 export const Footer = () => {
   return (
     <div className={styles.footer}>
-      <p>Hecho con amor <IconHeartFilled />  2023</p>
+      <p>Developed with <IconHeartFilled /> by LaB Develops - 2023</p>
     </div>
   )
 }

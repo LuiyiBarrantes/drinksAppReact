@@ -18,15 +18,15 @@ export const Header = () => {
 
   return (
     <header className={`position-sticky d-flex justify-content-between align-items-center py-4 ${styles.header}`}>
-      <div className='d-flex align-items-center'><figure className='ms-1 ms-sm-3 ms-md-5'><IconGlassFull className='ms-1 ms-sm-3 ms-md-4 ms-lg-5' width={80} height={80}></IconGlassFull></figure>
+      <div className='d-flex align-items-center'><figure className='ms-1 ms-sm-3 ms-md-5'><Link className={styles.link} to={'/drinksAppReact/'}><IconGlassFull className='ms-1 ms-sm-3 ms-md-4 ms-lg-5' width={80} height={80}></IconGlassFull></Link></figure>
         <div className='ms-sm-1 ms-md-3 ms-lg-5  d-flex gap-md-2 gap-3 gap-sm-1'>
           <p className=' fs-6 fs-4 '>Es momento de unos</p>
           <h1 className={styles.h1}> Drinks</h1>
-          {/* {<Link to={'/'}>Volver al Home</Link>} */}
+          
         </div>
       </div>
       <div className='d-flex me-3 me-md-5 gap-1'>
-        <div><IconUserCircle width={50} height={50} className={styles.icon}></IconUserCircle>
+        <div><Link className={styles.link} to={'/user'}><IconUserCircle width={50} height={50} className={styles.icon}></IconUserCircle></Link>
           {user ? <p>Hola {user}</p> : ''}</div>
         <div className='position-relative'>
           <IconShoppingCart
