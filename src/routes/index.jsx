@@ -12,7 +12,7 @@ export const AppRoutes = () => {
     
         <Routes>
             <Route path='/drinksAppReact/' element={<Home/>}></Route>
-            <Route path='*' element={<NotFound/>}></Route>
+            <Route path='/drinksAppReact/*' element={<NotFound/>}></Route>
             <Route path='/login' element={<Login/>}></Route>
             <Route path='/user' element={ <Profile/> }>
 
