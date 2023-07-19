@@ -34,7 +34,7 @@ export const Home = () => {
         </> : <Link to={'/login'}>Inicia sesion</Link>
       }
       
-      <h2 className='mt-5'><Link to={'/ejemplo'}>Ancla de prueba</Link>
+      <h2 className='mt-5'><Link to={'/bebidasGratis'}>Bebebidas GRATIS</Link>
       </h2>
       </Col>
       </Row>
