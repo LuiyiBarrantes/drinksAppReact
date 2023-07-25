@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { SearchForm } from '../../components/searchForm'
-import useUser from '../../hooks/useUser'
+import useAuth from '../../hooks/useAuth'
 import { Link } from 'react-router-dom'
 import { Button, Col, Row } from 'react-bootstrap'
 import styles from "./index.module.css";
@@ -9,7 +9,14 @@ import DrinkModalDetail from '../../components/drinkModalDetail'
 
 export const Home = () => {
 
-  const {user, logout} = useUser()
+  const {user, logout, setTokenSession, tokenSession, profile} = useAuth()
+
+  useEffect(() => {
+    setTokenSession(setTokenSession(sessionStorage.getItem('DrinksToken')))
+  profile(tokenSession)
+  
+  
+  }, [])
 
   return (
     <div className={`d-flex ${styles.body}`}>
@@ -25,8 +32,9 @@ export const Home = () => {
         <Col className='border-start' xs={2} >
         {
         user ? <>
-        {/* <h2>Hola! {user}</h2> 
-        <h2>Bienvenido</h2> */}
+        
+        <h2>Hola {user.name}!</h2> 
+        <p>Deseas ordenar algo?</p>
         
         <Button 
         onClick={() => logout()}

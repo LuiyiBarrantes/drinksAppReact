@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
 import styles from './index.module.css'
 import { IconGlassFull, IconShoppingCart, IconUserCircle } from '@tabler/icons-react'
-import useUser from '../../hooks/useUser'
+import useAuth from '../../hooks/useAuth'
 import { Link } from 'react-router-dom'
 import { CartCanvas } from '../cartCanvas'
 import { Badge } from 'react-bootstrap'
 import useCart from '../../hooks/useCart'
+import { IconLogin } from '@tabler/icons-react'
+import { IconLogout } from '@tabler/icons-react'
 
 export const Header = () => {
-  const { user } = useUser() || {}
+  const { user, logout } = useAuth() || {}
   const { cart, totalItems } = useCart()
   const [showCart, setShowCart] = useState(false)
 
   const handleShowCart = () => setShowCart(true)
   const handleHideCart = () => setShowCart(false)
+  const handleLogout = () => { logout() }
 
 
   return (
@@ -26,8 +29,16 @@ export const Header = () => {
         </div>
       </div>
       <div className='d-flex me-3 me-md-5 gap-1'>
-        <div><Link className={styles.link} to={'/user'}><IconUserCircle width={50} height={50} className={styles.icon}></IconUserCircle></Link>
-          {user ? <p>Hola {user}</p> : ''}</div>
+        <div>
+          
+          {user ? <Link className={styles.link} to={'/user/profile'}><IconUserCircle width={50} height={50} className={styles.icon}>
+            </IconUserCircle>
+            <p>{user.name}</p>
+            </Link> : <Link className={styles.link} to={'/login'}>
+            <IconLogin width={50} height={50} className={styles.icon}>
+            </IconLogin>
+            </Link>}
+          </div>
         <div className='position-relative'>
           <IconShoppingCart
             className={styles.icon}
@@ -36,7 +47,11 @@ export const Header = () => {
             onClick={handleShowCart}>
           </IconShoppingCart>
           <Badge className='position-absolute start-50' pill>{/* cart.length */ totalItems}</Badge>
-        </div>
+        </div >
+        {user && <div className='ms-5'>
+          <IconLogout  onClick={handleLogout} width={30} height={50}></IconLogout>
+          <p>Salir</p>
+        </div> }
         <CartCanvas showCart={showCart} handleCloseCart={handleHideCart} />
       </div>
     </header>

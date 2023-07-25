@@ -6,12 +6,12 @@ import { DrinkCard } from '../drinkCard'
 
 export const DrinksList = () => {
 
-   const {drinks} = useDrinks()
+   const {drinks} = useDrinks()//
    //console.log(drinks);
   return (
     <Row>
         {
-            drinks.map((drink) => 
+            !drinks ? <h3>Intenta buscar alguna bebida, quizas encuentres algo de tu agrado.</h3> : drinks.length == 0 ? <h4> Lo siento, no hay coincidencias, intenta con otro ingrediente o categoria.</h4> : drinks.map((drink) => 
              ( <DrinkCard
                 key={drink.idDrink}
                 drink={drink}

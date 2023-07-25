@@ -11,13 +11,15 @@ export const SearchForm = () => {
   
   const {getDrinks, loading} = useDrinks()
 
+  
+
    const initialValues = {
     ingredient: "",
     category: "",
   }
 
   const validationSchema = Yup.object({
-    //ingredient: Yup.string().required('El nombre es necesario'),
+    ingredient: Yup.string().required('El nombre es necesario'),
     category: Yup.string().required('La categria es necesaria')
   })
 

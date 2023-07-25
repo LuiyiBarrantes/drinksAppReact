@@ -6,7 +6,7 @@ const DrinksContext = createContext(null)
 
 const DrinksProvider = ({ children }) => {
 
-  const [drinks, setDrinks] = useState([])
+  const [drinks, setDrinks] = useState(null)
   const [loading, setLoading] = useState(false)
   const [recipe, setRecipe] = useState({})
   const [idDrink, setIdDrink] = useState(null)
@@ -24,7 +24,7 @@ const DrinksProvider = ({ children }) => {
       //console.log(drinkData);
 
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     } finally {
       setLoading(false)
     }
@@ -44,7 +44,7 @@ const DrinksProvider = ({ children }) => {
         //console.log(recipe);
       } catch (error) {
         //console.log(error);
-        console.error();
+        //console.error();
       } finally {
         setLoading(false)
 

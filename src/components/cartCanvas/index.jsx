@@ -77,7 +77,7 @@ export const CartCanvas = ({handleCloseCart,showCart}) => {
                 </ListGroup>
                 
                 <div className="d-flex justify-content-end border-top">
-                    {cart.length && <Button className='btn btn-warning mt-3'>
+                    {cart.length>0 && <Button className='btn btn-warning mt-3'>
                         Confirmar Comprar
                     </Button>}
                     
