@@ -14,7 +14,7 @@ export const AppRoutes = () => {
 
 
     <Routes>
-      <Route path='/drinksAppReact/' element={<Home />}></Route>
+      <Route path='/' element={<Home />}></Route>
       <Route path='*' element={<NotFound />}></Route>
       <Route path='/register' element={<Register />}></Route>
       <Route path='/login' element={<ProtectedRouteLogin />}>

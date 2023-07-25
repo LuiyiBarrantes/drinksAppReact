@@ -12,7 +12,7 @@ export const NotFound = () => {
             
             <Figure className='d-flex justify-content-center'><img src="https://media.tenor.com/hiZwFajWr7IAAAAM/party-pour-drink.gif" alt="" /></Figure>
 
-            <Link to={'/drinksAppReact'}><p className='text-center text-white'>Volver al inicio</p></Link>
+            <Link to={'/'}><p className='text-center text-white'>Volver al inicio</p></Link>
             </Col>
         </Row>
 

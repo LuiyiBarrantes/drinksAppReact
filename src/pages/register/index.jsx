@@ -13,7 +13,7 @@ export const Register = () => {
   
   //const {getDrinks, loading} = useDrinks()
 
-  const navigate = useNavigate
+  const navigate = useNavigate()
 
    const initialValues = {
     name: "",

@@ -21,7 +21,7 @@ export const Header = () => {
 
   return (
     <header className={`position-sticky d-flex justify-content-between align-items-center py-4 ${styles.header}`}>
-      <div className='d-flex align-items-center'><figure className='ms-1 ms-sm-3 ms-md-5'><Link className={styles.link} to={'/drinksAppReact/'}><IconGlassFull className='ms-1 ms-sm-3 ms-md-4 ms-lg-5' width={80} height={80}></IconGlassFull></Link></figure>
+      <div className='d-flex align-items-center'><figure className='ms-1 ms-sm-3 ms-md-5'><Link className={styles.link} to={'/'}><IconGlassFull className='ms-1 ms-sm-3 ms-md-4 ms-lg-5' width={80} height={80}></IconGlassFull></Link></figure>
         <div className='ms-sm-1 ms-md-3 ms-lg-5  d-flex gap-md-2 gap-3 gap-sm-1'>
           <p className=' fs-6 fs-4 '>Es momento de unos</p>
           <h1 className={styles.h1}> Drinks</h1>

@@ -29,7 +29,7 @@ export const Profile = () => {
     <hr />
     
     <h2>Bienvenido {user.name}</h2>
-    <Link to={'/drinksAppReact/'}>Volver al Home</Link>
+    <Link to={'/'}>Volver al Home</Link>
     </div>
   )
 }
