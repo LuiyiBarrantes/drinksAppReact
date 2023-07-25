@@ -3,18 +3,19 @@ import { useState } from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { MainLayout } from './layouts'
 import { AppRoutes } from './routes'
-import { UserProvider } from './context/UserProvider'
 import { CategoriesProvider } from './context/CategoriesProvider'
 import { DrinksProvider } from './context/DrinksProvider'
 import { CartProvider } from './context/CartProvider'
 import { BrowserRouter } from 'react-router-dom'
+import { AuthProvider } from './context/AuthProvider'
 
 function App() {
 
 
   return (
     <BrowserRouter>
-      <UserProvider>
+    
+      <AuthProvider>
         <CategoriesProvider>
           <DrinksProvider>
             <CartProvider>
@@ -24,7 +25,7 @@ function App() {
             </CartProvider>
           </DrinksProvider>
         </CategoriesProvider>
-      </UserProvider>
+      </AuthProvider>
     </BrowserRouter>
   )
 }
