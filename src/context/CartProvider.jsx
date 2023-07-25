@@ -23,11 +23,14 @@ import { cartReducer } from '../reducers/cart.reducer';
     (subTotal, item) => subTotal + item.quantity,
     0
   );
+    
+    const totalPrice = cart.reduce((subTotalPrice, item) => subTotalPrice + (item.price * item.quantity), 0)
   console.log(totalItems);
      const contextValues = {
         cart,
         dispatch,
-        totalItems
+        totalItems,
+        totalPrice
         /* 
         addCart  */
     }

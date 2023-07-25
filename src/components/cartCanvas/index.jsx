@@ -10,7 +10,7 @@ const { cleanCart } = types
 export const CartCanvas = ({handleCloseCart,showCart}) => {
     
     
-    const {cart, dispatch} = useCart()
+    const {cart, dispatch, totalPrice} = useCart()
 //console.log(cart);
          //guardo en local storage
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -76,10 +76,12 @@ export const CartCanvas = ({handleCloseCart,showCart}) => {
                     }
                 </ListGroup>
                 
-                <div className="d-flex justify-content-end border-top">
-                    {cart.length>0 && <Button className='btn btn-warning mt-3'>
+                <div className="d-flex justify-content-between border-top">
+                    {cart.length>0 && <><h4>Total: ${totalPrice}</h4>
+                    <Button className='btn btn-warning mt-3'>
                         Confirmar Comprar
-                    </Button>}
+                    </Button>
+                    </>  }
                     
                 </div>
                 
