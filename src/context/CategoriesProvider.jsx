@@ -1,12 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
 import { getCategoriesService } from '../services/categories.service';
+import { getIngredientsService } from '../services/ingredients.service';
 
 const CategoriesContext = createContext(null)
 
 const CategoriesProvider = ({children}) => {
 
     const [categories, setCategories] = useState([]);
+    const [ingredients, setIngredients] = useState([])
 
     const getCategories = async () => {
         try {
@@ -18,14 +20,25 @@ const CategoriesProvider = ({children}) => {
             console.error;
         }
     }
-
+    
+    async function getIngredients() {
+      try {
+        const ingredientsData = await getIngredientsService();
+      setIngredients(ingredientsData)
+      } catch (error) {
+        console.error;
+      }
+    }
+    
     useEffect(() => {
       getCategories()
+      getIngredients()
        }, [])
     
 
     const contextValue = {
-        categories
+        categories,
+        ingredients
     }
   
     return (

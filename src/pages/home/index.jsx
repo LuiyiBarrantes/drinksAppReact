@@ -11,17 +11,28 @@ export const Home = () => {
 
   const {user, logout, setTokenSession, tokenSession, profile} = useAuth()
 
-  useEffect(() => {
+  /* useEffect(() => {
     setTokenSession(setTokenSession(sessionStorage.getItem('DrinksToken')))
   profile(tokenSession)
   
   
-  }, [])
+  }, []) */
 
   return (
-    <div className={`d-flex ${styles.body}`}>
-      <Row className='justify-content-between w-100'>
-        <Col  >
+    <div className={`d-flex justify-content-between${styles.body}`}>
+      
+        {
+        user && <Col xs={1} className='me-3'>
+        
+        
+        <h2>Hola {user.name}!</h2> 
+        <p>Deseas ordenar algo?</p>
+        
+      
+         </Col>
+      }
+        
+        <Col  className='ms-2 me-2'>
         <h1>Encuentra tu bebida favorita.</h1>
       
       <hr />
@@ -30,25 +41,12 @@ export const Home = () => {
       <DrinkModalDetail/>
         </Col>
         <Col className='border-start' xs={2} >
-        {
-        user ? <>
         
-        <h2>Hola {user.name}!</h2> 
-        <p>Deseas ordenar algo?</p>
-        
-        <Button 
-        onClick={() => logout()}
-        variant='danger'>Cerrar sesion</Button>
-        </> : <Link to={'/login'}>Inicia sesion</Link>
-      }
       
-      <h2 className='mt-5'><Link to={'/bebidasGratis'}>Bebebidas GRATIS</Link>
+      <h2 className='mt-5 p-3'><Link to={'/bebidasGratis'}>Bebidas GRATIS</Link>
       </h2>
       </Col>
-      </Row>
-      
-      
-      
+            
     </div>
   )
 }

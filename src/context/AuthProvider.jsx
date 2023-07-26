@@ -15,7 +15,14 @@ const AuthProvider = ({children}) => {
         setAlert(error)
         setTimeout(()=>{
             setAlert(null)
-        }, 1500)
+        }, 2000)
+     }
+     const handleAlertToken = (error) => { 
+        setAlert(error)
+        setTimeout(()=>{
+            setAlert(null)
+            setUser(null)
+        }, 3000)
      }
      //values form login
     const login = async (values) => {
@@ -24,8 +31,11 @@ const AuthProvider = ({children}) => {
 
             sessionStorage.setItem('DrinksToken', token)
             const decodedToken =  token ?  jwtDecode(token) : null
-            //console.log(response);
+            console.log(token);//
             setUser(decodedToken.user)
+            setTokenSession(token)
+            console.log(tokenSession);//
+
         } catch (error) {
             //console.log(error);
             handleAlert(error)
@@ -36,12 +46,12 @@ const AuthProvider = ({children}) => {
         try {
             /* setTokenSession(sessionStorage.getItem('DrinksToken')) */
             const {user} = await profileAuthService(token)
-            /* const decodedToken =  token ?  jwtDecode(token) : null */
-            //console.log(response);//
+            /* const decodedToken =  token ?  jwtDecode(token) : null *///
+            console.log(user);//
             setUser(user)
-        } catch (error) {
-            //console.log(error);
-            //handleAlert(error)
+        } catch (error) {//
+            console.log(error);//
+            handleAlertToken(error)
         }
      }
 

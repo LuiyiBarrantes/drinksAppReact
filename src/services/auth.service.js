@@ -35,7 +35,7 @@ export const loginAuthService = async (info) => {
             }
         }
         )
-        console.log(data);
+        //console.log(data);
         return data
 
 
@@ -50,9 +50,10 @@ export const profileAuthService = async (token) => {
         const url = `${apiUrl}profile`
         const { data } = await axios.get(url,{
             headers:{
-                Authorization : token
+                authorization : token
             }
-        })
+        })//
+         console.log(data);
         return data
     } catch (error) {
         throw error.response.data.message

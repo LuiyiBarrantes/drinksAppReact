@@ -7,7 +7,7 @@ import useDrinks from "../../hooks/useDrinks"
 
 export const SearchForm = () => {
 
-  const {categories} = useCategories()
+  const {categories, ingredients} = useCategories()
   
   const {getDrinks, loading} = useDrinks()
 
@@ -19,7 +19,7 @@ export const SearchForm = () => {
   }
 
   const validationSchema = Yup.object({
-    ingredient: Yup.string().required('El nombre es necesario'),
+    ingredient: Yup.string().required('El ingrediente es necesario'),
     category: Yup.string().required('La categria es necesaria')
   })
 
@@ -39,15 +39,23 @@ export const SearchForm = () => {
       <Form onSubmit={formik.handleSubmit}>
           <Row >
             <Col sm={6} md={6}>
-              <Form.Group>
-                <Form.Label htmlFor="ingredient">Nombre del ingrediente</Form.Label>
+            <Form.Group>
+                <Form.Label htmlFor="ingredient">Elige un Ingrediente</Form.Label>
                 <Field
                 id='ingredient'
-                type='text'
-                placeholder='Ej. Tequila, Vodka, etc.'
                 name='ingredient'
-                as={Form.Control}
-                />
+                as={Form.Select}>
+                  <option value="" defaultValue={''} hidden>- Seleccione ingrediente -</option>
+                  {
+                    ingredients.sort((a,b)=>a.strIngredient1 > b.strIngredient1 ? 1 : a.strIngredient1 < b.strIngredient1 ? -1 : 0 ).map(ingredient =>(
+                      <option 
+                      value={ingredient.strIngredient1}
+                      key={ingredient.strIngredient1}>
+                        {ingredient.strIngredient1} 
+                      </option>
+                    ))
+                  }
+                </Field>
                 <ErrorMessage
                   name="ingredient"
                   component={Form.Text}
