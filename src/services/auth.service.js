@@ -52,8 +52,8 @@ export const profileAuthService = async (token) => {
             headers:{
                 authorization : token
             }
-        })//
-         console.log(data);
+        })
+        // console.log(data);
         return data
     } catch (error) {
         throw error.response.data.message

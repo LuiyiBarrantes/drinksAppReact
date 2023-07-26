@@ -6,6 +6,7 @@ import useCart from '../../hooks/useCart'
 import { types } from '../../types'
 import { IconShoppingCartPlus } from '@tabler/icons-react'
 import Swal from 'sweetalert2'
+import { IconStar } from '@tabler/icons-react'
 
 export const DrinkCard = ({ drink }) => {
     const { strDrinkThumb, strDrink, idDrink } = drink
@@ -19,7 +20,7 @@ const {addItemToCart} =  types
             payload: drink
         })
         Swal.fire({
-            position: 'top-center',
+            position: 'center',
             icon: 'success',
             title: 'Bebida agregada al carrito',
             showConfirmButton: false,
@@ -30,12 +31,13 @@ const {addItemToCart} =  types
 
     return (
         <Col md={6} lg={3} className='d-flex align-content-stretch'>
-            <Card className='mb-4'>
+            <Card className='mb-4 position-relative'>
                 <Card.Img
                     variant='top'
                     src={strDrinkThumb}
                     alt={`Imagen de ${strDrink}`}
                 />
+                <IconStar width={30} height={30} className='btn bg-warning shadow-lg position-absolute top-0 end-0 rounded-circle p-1 '></IconStar>
                 <Card.Body className='d-flex flex-column justify-content-between'>
                     <Card.Title>
                         {strDrink}
