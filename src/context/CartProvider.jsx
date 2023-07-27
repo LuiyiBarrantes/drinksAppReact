@@ -9,13 +9,7 @@ import { cartReducer } from '../reducers/cart.reducer';
     return JSON.parse(localStorage.getItem('cart')) || []
   }
  const CartProvider = ({children}) => {
-     // Initial Provider State
-     /* const [cart, setCart] = useState([])
-     const {drinks} = useDrinks()
-     const addCart = (idDrink) => { 
-        const drinkItemCart = drinks.find(drink => drink.idDrink === idDrink)
-        setCart([...cart, drinkItemCart])
-      } */
+     
 
       const [cart, dispatch] = useReducer(cartReducer, [], init)
 //console.log(cart);
@@ -35,10 +29,6 @@ import { cartReducer } from '../reducers/cart.reducer';
         addCart  */
     }
      
-     // Reducer Function
-    /*  const  = (state, action) => {
-         
-    }; */
     
     return (
         <CartContext.Provider value={contextValues}>

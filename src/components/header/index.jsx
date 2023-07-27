@@ -10,13 +10,16 @@ import { IconLogin } from '@tabler/icons-react'
 import { IconLogout } from '@tabler/icons-react'
 
 export const Header = () => {
-  const { user, logout } = useAuth() || {}
+  const { user, logout, setFavoriteDrinks } = useAuth() || {}
   const { cart, totalItems } = useCart()
   const [showCart, setShowCart] = useState(false)
 
   const handleShowCart = () => setShowCart(true)
   const handleHideCart = () => setShowCart(false)
-  const handleLogout = () => { logout() }
+  const handleLogout = () => { 
+    logout()
+    setFavoriteDrinks([])
+  }
 
 
   return (

@@ -1,6 +1,6 @@
 import  PropTypes from 'prop-types';
 import { createContext, useContext, useState } from 'react';
-import { loginAuthService, profileAuthService } from '../services/auth.service';
+import { loginAuthService, profileAuthService, toggleFavoriteDrinkUser } from '../services/auth.service';
 import jwtDecode from 'jwt-decode';
 
 const AuthContext = createContext(null)
@@ -10,7 +10,8 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const [alert, setAlert] = useState(null)
     const [tokenSession, setTokenSession] = useState(null)
-
+    const [favoriteDrinks, setFavoriteDrinks] = useState(null);
+    //console.log('favoriteDrinks', favoriteDrinks)
     const handleAlert = (error) => { 
         setAlert(error)
         setTimeout(()=>{
@@ -41,6 +42,24 @@ const AuthProvider = ({children}) => {
             handleAlert(error)
         }
     }
+    const toggleFavorite = async (payloadDrink) => { 
+        try {
+            const {data} = await toggleFavoriteDrinkUser(payloadDrink, tokenSession)
+            //console.log('data.favorites', data.favorites)
+            const {favorites} = data
+            //console.log('payloadDrink', payloadDrink)
+            //console.log('favorites', favorites)
+            /*const updatedFavoriteDrinks = favorites.filter(
+                (favorite) => favorite.drink.toString() !== payloadDrink.idDrink.toString()
+              ); */
+              
+              const updatedFavoriteDrinks = [...favorites]
+              //console.log('updatedFavoriteDrinks', updatedFavoriteDrinks)
+             setFavoriteDrinks(updatedFavoriteDrinks /*favorites*/ )
+        } catch (error) {
+            console.log('error', error)
+        }
+     }
 
     const profile = async (token) => { 
         try {
@@ -49,6 +68,7 @@ const AuthProvider = ({children}) => {
             /* const decodedToken =  token ?  jwtDecode(token) : null *///
             console.log(user);//
             setUser(user)
+            setFavoriteDrinks(user.favorites )
         } catch (error) {//
             console.log(error);//
             handleAlertToken(error)
@@ -68,6 +88,9 @@ const AuthProvider = ({children}) => {
         tokenSession,
         profile,
         login,
+        toggleFavorite,
+        favoriteDrinks,
+        setFavoriteDrinks,
         logout
     }
 

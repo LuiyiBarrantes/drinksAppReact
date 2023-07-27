@@ -3,14 +3,15 @@ import useAuth from '../../hooks/useAuth'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { Col, Row } from 'react-bootstrap'
+import { DrinkCard } from '../../components/drinkCard'
 
 export const Profile = () => {
 
-    const { user, login, logout, profile, tokenSession, alert} = useAuth()
-    
+    const { user, login, logout, profile, tokenSession, alert, favoriteDrinks} = useAuth()
+    console.log('favoriteDrinks', favoriteDrinks)
     useEffect(() => {
       //setTokenSession(setTokenSession(sessionStorage.getItem('DrinksToken')))
-      console.log('tokenSession', tokenSession)
+      //console.log('tokenSession', tokenSession)
     profile(tokenSession)
     
     
@@ -46,10 +47,19 @@ export const Profile = () => {
     <Row className='border-top '>
     <Col className='border-end'>
     <h2>Tus Favoritos</h2>
+    <Row>
+      {favoriteDrinks?.map((drink) => 
+             ( <DrinkCard
+                key={drink.idDrink}
+                drink={drink}
+              />  )
+            )}
+    </Row>
+    
     </Col>
-    <Col xs={5}>
+    {/* <Col xs={2}>
     <h2 >Tus Compras</h2>
-    </Col>
+    </Col> */}
     </Row>
     <Link to={'/'}>Volver al Home</Link>
     </div>) 

@@ -59,3 +59,22 @@ export const profileAuthService = async (token) => {
         throw error.response.data.message
     }
 }
+
+export const toggleFavoriteDrinkUser = async (drinkPayload,token) => {
+    console.log('drinkPayload', drinkPayload)
+    try {
+        const url = `${apiUrl}favorites`
+        const { data } = await axios.post(url, {
+            //body: JSON.stringify(info)
+            ...drinkPayload
+        }, {
+            headers: {
+                authorization : token,
+            }
+
+        })
+        return data
+    } catch (error) {
+        throw error.response.data.message
+    }
+}
