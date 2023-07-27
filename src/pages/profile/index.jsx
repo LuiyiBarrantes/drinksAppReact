@@ -43,11 +43,12 @@ export const Profile = () => {
     (<div>
       <h1 className='border-bottom mb-3'>Este es tu perfil</h1>
        
-    <h2>Bienvenido {user.name}</h2>
+    <h2>Bienvenido {user.name}</h2> 
     <Row className='border-top '>
     <Col className='border-end'>
     <h2>Tus Favoritos</h2>
     <Row>
+      {!favoriteDrinks && <p>No agregaste ninguna bebida a favoritos</p> || favoriteDrinks.length==0 && <p>No agregaste ninguna bebida a favoritos</p>  }
       {favoriteDrinks?.map((drink) => 
              ( <DrinkCard
                 key={drink.idDrink}
