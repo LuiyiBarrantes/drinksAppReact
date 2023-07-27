@@ -15,7 +15,7 @@ export const DrinkCard = ({ drink }) => {
     const { handleDrinkIdClick, handleShowModalClick } = useDrinks()
     const { dispatch } = useCart()
     const { addItemToCart } = types
-    const {toggleFavorite, favoriteDrinks} = useAuth()
+    const {toggleFavorite, favoriteDrinks, user} = useAuth()
     const payload = {idDrink,
         strDrink,
         strDrinkThumb,
@@ -50,8 +50,20 @@ export const DrinkCard = ({ drink }) => {
         setFillStar(false);
       }
     }, [isFavoriteDrink]);
-    
+    const handleLoginAlert = () => {
+        Swal.fire({
+          icon: 'info',
+          title: 'Inicia sesión',
+          text: 'Debes iniciar sesión para agregar a favoritos.',
+          showConfirmButton: true,
+          confirmButtonText: 'Entendido',
+        });
+      };
     const handleToggleStar = () => { 
+        if (!user) {
+            handleLoginAlert();
+            return;
+          }
         !fillStar?
           setFillStar(true)                     
        :
