@@ -49,7 +49,7 @@ export const Header = () => {
           <Badge className='position-absolute start-50' pill>{/* cart.length */ totalItems}</Badge>
         </div >
         {user && <div className='ms-5'>
-          <IconLogout  onClick={handleLogout} width={30} height={50}></IconLogout>
+          <IconLogout className={styles.icon} onClick={handleLogout} width={30} height={50}></IconLogout>
           <p>Salir</p>
         </div> }
         <CartCanvas showCart={showCart} handleCloseCart={handleHideCart} />

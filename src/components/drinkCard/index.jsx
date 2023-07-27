@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Card, Col } from 'react-bootstrap'
 import useDrinks from '../../hooks/useDrinks'
@@ -7,12 +7,16 @@ import { types } from '../../types'
 import { IconShoppingCartPlus } from '@tabler/icons-react'
 import Swal from 'sweetalert2'
 import { IconStar } from '@tabler/icons-react'
+import { IconStarFilled } from '@tabler/icons-react'
 
 export const DrinkCard = ({ drink }) => {
     const { strDrinkThumb, strDrink, idDrink } = drink
     const { handleDrinkIdClick, handleShowModalClick } = useDrinks()
     const { dispatch } = useCart()
-const {addItemToCart} =  types
+    const { addItemToCart } = types
+
+    const [fillStar, setFillStar] = useState(false);
+
     const handleAddCart = () => {
         //console.log(drink);
         dispatch({
@@ -25,9 +29,15 @@ const {addItemToCart} =  types
             title: 'Bebida agregada al carrito',
             showConfirmButton: false,
             timer: 1500,
-            width:'250px'
-          })
+            width: '250px'
+        })
     }
+    const handleToggleStar = () => { 
+        !fillStar?
+          setFillStar(true)  
+       :
+        setFillStar(false)
+     }
 
     return (
         <Col md={6} lg={3} className='d-flex align-content-stretch'>
@@ -37,7 +47,7 @@ const {addItemToCart} =  types
                     src={strDrinkThumb}
                     alt={`Imagen de ${strDrink}`}
                 />
-                <IconStar width={30} height={30} className='btn bg-warning shadow-lg position-absolute top-0 end-0 rounded-circle p-1 '></IconStar>
+                {!fillStar ? <IconStar onClick={handleToggleStar} width={30} height={30} className='btn bg-warning shadow-lg position-absolute top-0 end-0 rounded-circle p-1 '></IconStar> : <IconStarFilled onClick={handleToggleStar} width={30} height={30} className='btn bg-warning shadow-lg position-absolute top-0 end-0 rounded-circle p-1 '></IconStarFilled> }
                 <Card.Body className='d-flex flex-column justify-content-between'>
                     <Card.Title>
                         {strDrink}
@@ -56,7 +66,7 @@ const {addItemToCart} =  types
                     <Button
                         variant='danger'
                         className='w-100 text-uppercase mt-1'
-                        onClick={ handleAddCart                      }
+                        onClick={handleAddCart}
 
                     >
                         Comprar <IconShoppingCartPlus></IconShoppingCartPlus>
